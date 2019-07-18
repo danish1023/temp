@@ -217,84 +217,84 @@ function login() {
   };
   function fail(error) {
     console.log(error);
-    // var DeviceID = localStorage.fcm_token;
-    // if (!DeviceID) {
-    //   DeviceID = 'null';
-    // }
-    // var Country = $$('#login-form select[name=Country]').val();
-    // var MobileNo = $$('#login-form input[name=MobileNo]').val();
-    // var EmailId = $$('#login-form input[name=EmailId]').val();
-    // //var ExistingMember = $$('#login-form input[name=ExistingMember]:checked').val();
+    var DeviceID = localStorage.fcm_token;
+    if (!DeviceID) {
+      DeviceID = 'null';
+    }
+    var Country = $$('#login-form select[name=Country]').val();
+    var MobileNo = $$('#login-form input[name=MobileNo]').val();
+    var EmailId = $$('#login-form input[name=EmailId]').val();
+    //var ExistingMember = $$('#login-form input[name=ExistingMember]:checked').val();
 
-    // var EmailRequired = false;
-    // if (Country != 'IN(+91)') {
-    //   EmailRequired = true;
-    // }
+    var EmailRequired = false;
+    if (Country != 'IN(+91)') {
+      EmailRequired = true;
+    }
 
-    // if (MobileNo == '') {
-    //   app.dialog.alert("Please enter Mobile Number");
-    // }
-    // else if (EmailId == '' && EmailRequired == true) {
-    //   app.dialog.alert("Please enter Email ID");
-    // }
-    // else {
-    //   var obj = {
-    //     Country: Country.slice(0, -1).split('(')[0],
-    //     MobileNo: MobileNo,
-    //     EmailId: EmailId,
-    //     ExistingMember: 'Yes',
-    //     IMEINo: 'null',
-    //     DeviceID: DeviceID,
-    //     //OSType: device.platform,
-    //     OSType: 'android',
-    //     OTP: '',
-    //   };
-    //   console.log(obj);
-    //   app.request({
-    //     url: BaseURL + '/Login',
-    //     method: 'POST',
-    //     dataType: 'json',
-    //     data: obj,
-    //     contentType: 'application/json',
-    //     beforeSend: function (xhr) {
-    //       xhr.setRequestHeader("Authorization", "Basic " + btoa(AuthUsername + ":" + AuthPassword));
-    //       var spinnerOptions = { dimBackground: false };
-    //       SpinnerPlugin.activityStart(null, spinnerOptions);
-    //     },
-    //     error: function (xhr, status) {
-    //       console.log(status);
-    //       alert(statusMessage(status));
-    //     },
-    //     success: function (data, status, xhr) {
-    //       console.log(data);
-    //       if (data.ErrorCode == '0') {
-    //         app.router.navigate('/dashboard/');
-    //       }
-    //       else if (data.ErrorCode == '-3100' || data.ErrorCode == '-1038') {
-    //         app.views.main.router.navigate('/otp/', {
-    //           context: {
-    //             login_form_data: JSON.stringify(obj),
-    //           }
-    //         });
-    //       }
-    //       else if (data.ErrorCode == '-3300') {
-    //         app.dialog.alert(data.ErrorMessage, function () {
-    //           app.views.main.router.navigate('/otp/', {
-    //             context: {
-    //               login_form_data: JSON.stringify(obj),
-    //             }
-    //           });
-    //         });
-    //       }
-    //       else {
-    //         app.dialog.alert(data.ErrorMessage);
-    //       }
-    //     },
-    //     complete: function (xhr, status) {
-    //       SpinnerPlugin.activityStop();
-    //     }
-    //   })
-    // }
+    if (MobileNo == '') {
+      app.dialog.alert("Please enter Mobile Number");
+    }
+    else if (EmailId == '' && EmailRequired == true) {
+      app.dialog.alert("Please enter Email ID");
+    }
+    else {
+      var obj = {
+        Country: Country.slice(0, -1).split('(')[0],
+        MobileNo: MobileNo,
+        EmailId: EmailId,
+        ExistingMember: 'Yes',
+        IMEINo: 'null',
+        DeviceID: DeviceID,
+        //OSType: device.platform,
+        OSType: 'android',
+        OTP: '',
+      };
+      console.log(obj);
+      app.request({
+        url: BaseURL + '/Login',
+        method: 'POST',
+        dataType: 'json',
+        data: obj,
+        contentType: 'application/json',
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader("Authorization", "Basic " + btoa(AuthUsername + ":" + AuthPassword));
+          var spinnerOptions = { dimBackground: false };
+          SpinnerPlugin.activityStart(null, spinnerOptions);
+        },
+        error: function (xhr, status) {
+          console.log(status);
+          alert(statusMessage(status));
+        },
+        success: function (data, status, xhr) {
+          console.log(data);
+          if (data.ErrorCode == '0') {
+            app.router.navigate('/dashboard/');
+          }
+          else if (data.ErrorCode == '-3100' || data.ErrorCode == '-1038') {
+            app.views.main.router.navigate('/otp/', {
+              context: {
+                login_form_data: JSON.stringify(obj),
+              }
+            });
+          }
+          else if (data.ErrorCode == '-3300') {
+            app.dialog.alert(data.ErrorMessage, function () {
+              app.views.main.router.navigate('/otp/', {
+                context: {
+                  login_form_data: JSON.stringify(obj),
+                }
+              });
+            });
+          }
+          else {
+            app.dialog.alert(data.ErrorMessage);
+          }
+        },
+        complete: function (xhr, status) {
+          SpinnerPlugin.activityStop();
+        }
+      })
+    }
   };
 }
 

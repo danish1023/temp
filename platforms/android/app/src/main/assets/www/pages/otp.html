@@ -136,7 +136,7 @@
                   OTP: value,
                 };
                 app.request({
-                  url: BaseURL + '/WholesalerLogin',
+                  url: BaseURL + '/Login',
                   method: 'POST',
                   dataType: 'json',
                   data: obj,
@@ -202,7 +202,7 @@
                   OTP: body.substr(12, 4),
                 };
                 app.request({
-                  url: BaseURL + '/WholesalerLogin',
+                  url: BaseURL + '/Login',
                   method: 'POST',
                   dataType: 'json',
                   data: obj,
