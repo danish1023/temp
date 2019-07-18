@@ -1,0 +1,189 @@
+<template>
+  <div class="page" id="otp-page">
+    <div class="navbar">
+      <div class="navbar-inner sliding bg-color-white color-purple">
+        <div class="left">
+          <a href="#" class="link back">
+            <i class="material-icons">arrow_back</i>
+          </a>
+        </div>
+        <div class="title">Verification Code</div>
+      </div>
+    </div>
+    <div class="page-content bg-color-white">
+      <div class="block text-align-center no-margin-bottom">
+        <img width="40" src="img/password.png" />
+        <h3 class="margin color-purple">Verify Your Number</h3>
+        <p class="padding">Enter the 4-digit verification code sent to {{email_mobile}} over {{medium}}</p>
+      </div>
+      <form>
+        <div class="block passcode-input no-margin-top">
+          <input type="text" value="____" id="demo-numpad-inline">
+        </div>
+        <p class="text-align-center">
+          <a href="#" @click="resendOTP">Resend Verification Code</a>
+        </p>
+        <div class="block block-strong no-padding no-margin passcode-numpad">
+          <div id="numpad-inline-container"></div>
+        </div>
+      </form>
+    </div>
+  </div>
+</template>
+<script>
+  return {
+    methods: {
+      resendOTP: function (e, page) {
+        var login_form_data = JSON.parse(this.$route.context.login_form_data);
+        var Country = login_form_data.Country;
+        var MobileNo = login_form_data.MobileNo;
+        var EmailId = login_form_data.EmailId;
+        var ExistingMember = login_form_data.ExistingMember;
+        var IMEINo = login_form_data.IMEINo;
+        var DeviceID = login_form_data.DeviceID;
+        var OSType = login_form_data.OSType;
+        var obj = {
+          Country: Country,
+          MobileNo: MobileNo,
+          EmailId: EmailId,
+          ExistingMember: ExistingMember,
+          IMEINo: IMEINo,
+          DeviceID: DeviceID,
+          OSType: OSType,
+          OTP: '',
+        };
+        app.request({
+          url: BaseURL + '/WholesalerLogin',
+          method: 'POST',
+          dataType: 'json',
+          data: obj,
+          contentType: 'application/json',
+          beforeSend: function (xhr) {
+            xhr.setRequestHeader("Authorization", "Basic " + btoa(AuthUsername + ":" + AuthPassword));
+            var spinnerOptions = { dimBackground: false };
+            SpinnerPlugin.activityStart(null, spinnerOptions);
+          },
+          error: function (xhr, status) {
+            alert(statusMessage(status));
+          },
+          success: function (data, status, xhr) {
+            app.views.main.router.navigate('/otp/', {
+              ignoreCache: true,
+              reloadCurrent: true,
+              context: {
+                login_form_data: JSON.stringify(obj),
+              }
+            });
+            app.dialog.alert(data.ErrorMessage);
+          },
+          complete: function (xhr, status) {
+            SpinnerPlugin.activityStop();
+          }
+        })
+      }
+    },
+    data: function () {
+      var login_form_data = JSON.parse(this.$route.context.login_form_data);
+      var Country = login_form_data.Country;
+      var MobileNo = login_form_data.MobileNo;
+      var EmailId = login_form_data.EmailId;
+      if (Country == 'IN') {
+        var email_mobile = MobileNo;
+        var medium = 'SMS';
+      }
+      else {
+        var email_mobile = EmailId;
+        var medium = 'Email';
+      }
+      return {
+        email_mobile: email_mobile,
+        medium: medium,
+      }
+    },
+    on: {
+      pageInit: function (e, page) {
+        var login_form_data = JSON.parse(page.route.context.login_form_data);
+        var Country = login_form_data.Country;
+        var MobileNo = login_form_data.MobileNo;
+        var EmailId = login_form_data.EmailId;
+        var ExistingMember = login_form_data.ExistingMember;
+        var IMEINo = login_form_data.IMEINo;
+        var DeviceID = login_form_data.DeviceID;
+        var OSType = login_form_data.OSType;
+
+        var numpadInline = app.keypad.create({
+          inputEl: '#demo-numpad-inline',
+          containerEl: '#numpad-inline-container',
+          toolbar: false,
+          valueMaxLength: 4,
+          dotButton: false,
+          formatValue: function (value) {
+            value = value.toString();
+            return value + ('______').substring(0, 4 - value.length);
+          },
+          on: {
+            change(keypad, value) {
+              value = value.toString();
+              if (value.length === 4) {
+                var obj = {
+                  Country: Country,
+                  MobileNo: MobileNo,
+                  EmailId: EmailId,
+                  ExistingMember: ExistingMember,
+                  IMEINo: IMEINo,
+                  DeviceID: DeviceID,
+                  OSType: OSType,
+                  OTP: value,
+                };
+                app.request({
+                  url: BaseURL + '/WholesalerLogin',
+                  method: 'POST',
+                  dataType: 'json',
+                  data: obj,
+                  contentType: 'application/json',
+                  beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Authorization", "Basic " + btoa(AuthUsername + ":" + AuthPassword));
+                    var spinnerOptions = { dimBackground: false };
+                    SpinnerPlugin.activityStart(null, spinnerOptions);
+                  },
+                  error: function (xhr, status) {
+                    alert(statusMessage(status));
+                  },
+                  success: function (data, status, xhr) {
+                    console.log(obj);
+                    console.log(data);
+                    if (data.ErrorCode == '0') {
+                      localStorage.setItem('User', JSON.stringify(data.Response));
+                      app.views.main.router.navigate('/dashboard/');
+                    }
+                    else if (data.ErrorCode == '-3200') {
+                      app.dialog.alert(data.ErrorMessage, function () {
+                        app.views.main.router.navigate({
+                          name: 'business-type',
+                          params: { 'Country': Country, 'MobileNo': MobileNo },
+                        });
+                      });
+                    }
+                    else if (data.ErrorCode == '-3300') {
+                      app.dialog.alert(data.ErrorMessage, function () {
+                        app.views.main.router.navigate({
+                          name: 'guest-dashboard',
+                        });
+                      });
+                    }
+                    else {
+                      app.dialog.alert(data.ErrorMessage);
+                    }
+                  },
+                  complete: function (xhr, status) {
+                    SpinnerPlugin.activityStop();
+                  }
+                })
+              }
+            }
+          }
+        });
+      },
+    }
+  }
+</script>

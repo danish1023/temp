@@ -1,0 +1,104 @@
+<template>
+  <div class="page">
+    <div class="navbar bg-color-white color-purple">
+      <div class="navbar-inner sliding">
+        <div class="title">
+          <img height="30" src="img/logo-xs.png" />
+        </div>
+        <div class="right">
+          <img class="padding-right" height="25" src="img/tf-logo.png" />
+        </div>
+      </div>
+    </div>
+    <div class="toolbar tabbar tabbar-labels toolbar-bottom-md">
+      <div class="toolbar-inner">
+        <a href="/guest-dashboard/" class="tab-link tab-link-active">
+          <i class="icon material-icons md-only">home</i>
+          <span class="tabbar-label">Home</span>
+        </a>
+        <a href="/about/" class="tab-link">
+          <i class="icon material-icons md-only">business</i>
+          <span class="tabbar-label">About Us</span>
+        </a>
+        <a href="#" class="tab-link">
+          <i class="icon material-icons md-only">local_activity</i>
+          <span class="tabbar-label">Campaign</span>
+        </a>
+      </div>
+    </div>
+    <div class="page-content">
+      <div data-pagination='{"el": ".swiper-pagination"}' class="swiper-container swiper-init">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img class="slider-img" src="img/banner1.jpg" />
+          </div>
+          <div class="swiper-slide">
+            <img class="slider-img" src="img/banner2.jpg" />
+          </div>
+          <div class="swiper-slide">
+            <img class="slider-img" src="img/banner3.jpg" />
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+      <div class="block campaign-block no-margin">
+        <a class="item-link" href="#">
+          <img class="campaign-img" src="img/campaign.jpg" />
+        </a>
+      </div>
+      <div class="block category-block no-margin">
+        <div class="row">
+          <div class="col category-img-block">
+            <img class="category-img" src="img/dress.jpg" />
+            <div class="campaign-overlay">
+              <h4>Dress</h4>
+            </div>
+          </div>
+          <div class="col category-img-block">
+            <img class="category-img" src="img/kurti.jpg" />
+            <div class="campaign-overlay">
+              <h4>Kurti</h4>
+            </div>
+          </div>
+          <div class="col category-img-block">
+            <img class="category-img" src="img/lehenga.jpg" />
+            <div class="campaign-overlay">
+              <h4>Lehenga</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="block category-block no-margin">
+        <div class="row">
+          <div class="col category-img-block">
+            <img class="category-img" src="img/saree.jpg" />
+            <div class="campaign-overlay">
+              <h4>Saree</h4>
+            </div>
+          </div>
+          <div class="col category-img-block">
+            <img class="category-img" src="img/suit.jpg" />
+            <div class="campaign-overlay">
+              <h4>Suit</h4>
+            </div>
+          </div>
+          <div class="col category-img-block">
+            <img class="category-img" src="img/legging.jpg" />
+            <div class="campaign-overlay">
+              <h4>Legging</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+  return {
+    on: {
+      pageInit: function () {
+
+      },
+    },
+  }
+</script>

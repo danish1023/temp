@@ -1,0 +1,447 @@
+<template>
+  <div class="page" id="user-profile-page">
+    <div class="navbar">
+      <div class="navbar-inner sliding bg-color-white color-purple">
+        <div class="left">
+          <a href="#" class="link back">
+            <i class="material-icons">arrow_back</i>
+          </a>
+        </div>
+        <div class="title">My Profile</div>
+      </div>
+    </div>
+    <div class="page-content bg-color-white">
+
+    </div>
+  </div>
+</template>
+<script>
+  return {
+    data: function () {
+      var UserData = JSON.parse(localStorage.User);
+      return {
+        data: UserData,
+      }
+    },
+    on: {
+      pageInit: function (e, page) {
+        var User = localStorage.User;
+        var UserData = JSON.parse(User);
+        var MemberType = UserData[0].MemberType;
+        var obj = {
+          CustomerId: UserData[0].CustomerId,
+        };
+        if (MemberType == 'A') {
+          app.request({
+            url: BaseURL + '/GetAgentProfile',
+            method: 'POST',
+            dataType: 'json',
+            data: obj,
+            contentType: 'application/json',
+            beforeSend: function (xhr) {
+              xhr.setRequestHeader("Authorization", "Basic " + btoa(AuthUsername + ":" + AuthPassword));
+              var spinnerOptions = { dimBackground: false };
+              SpinnerPlugin.activityStart(null, spinnerOptions);
+            },
+            error: function (xhr, status) {
+              alert(statusMessage(status));
+            },
+            success: function (data, status, xhr) {
+              console.log(data);
+              if (data.ErrorCode == '0') {
+                var html = `<div class="block text-align-center no-margin bg-color-purple">
+                <div style="width: fit-content;margin: 0 auto;padding: 16px;">
+                <img style="border-radius: 50%;width: 100px;height: 100px;" onerror='this.src="img/default-avatar.png"' src="${data.Response[0].ProfileImage}"/>
+                <h2 class="no-margin color-white">${data.Response[0].AgentName}</h2>
+                <p class="no-margin color-white">${data.Response[0].AgentMobile}</p>
+                </div>
+              </div>
+              <div class="list media-list no-hairlines no-margin">
+                <ul class="user-profile-info">
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-subtitle color-purple">Date of Birth</div>
+                        <div class="item-title-row">
+                          <div class="item-title">${NA(data.Response[0].DOB)}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-subtitle color-purple">District</div>
+                        <div class="item-title-row">
+                          <div class="item-title">${NA(data.Response[0].District)}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-subtitle color-purple">Zone</div>
+                        <div class="item-title-row">
+                          <div class="item-title">${NA(data.Response[0].Zone)}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-subtitle color-purple">GST</div>
+                        <div class="item-title-row">
+                          <div class="item-title">${NA(data.Response[0].GST)}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-subtitle color-purple">PAN</div>
+                        <div class="item-title-row">
+                          <div class="item-title">${NA(data.Response[0].PAN)}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-subtitle color-purple">Tier</div>
+                        <div class="item-title-row">
+                          <div class="item-title">${NA(data.Response[0].Tier)}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-subtitle color-purple">Manager Name</div>
+                        <div class="item-title-row">
+                          <div class="item-title">${NA(data.Response[0].ManagerName)}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-subtitle color-purple">Manager Mobile Number</div>
+                        <div class="item-title-row">
+                          <div class="item-title">${NA(data.Response[0].ManagerMobileNumber)}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>`;
+                $$('#user-profile-page .page-content').html(html);
+              }
+              else {
+                app.dialog.alert(data.ErrorMessage);
+              }
+            },
+            complete: function (xhr, status) {
+              SpinnerPlugin.activityStop();
+            }
+          })
+        }
+        else {
+          app.request({
+            url: BaseURL + '/GetWholesalerProfile',
+            method: 'POST',
+            dataType: 'json',
+            data: obj,
+            contentType: 'application/json',
+            beforeSend: function (xhr) {
+              xhr.setRequestHeader("Authorization", "Basic " + btoa(AuthUsername + ":" + AuthPassword));
+              var spinnerOptions = { dimBackground: false };
+              SpinnerPlugin.activityStart(null, spinnerOptions);
+            },
+            error: function (xhr, status) {
+              alert(statusMessage(status));
+            },
+            success: function (data, status, xhr) {
+              console.log(data);
+              if (data.ErrorCode == '0') {
+                var html = `<div class="block text-align-center no-margin bg-color-purple">
+                <div style="width: fit-content;margin: 0 auto;padding: 16px;">
+                <img style="border-radius: 50%;width: 100px;height: 100px;" onerror='this.src="img/default-avatar.png"' src="${data.Response[0].ProfilePic}"/>
+                <h2 class="no-margin color-white">${data.Response[0].OwnerName}</h2>
+                <p class="no-margin color-white">${data.Response[0].MobileNo}</p>
+                </div>
+              </div>
+              <div class="list media-list no-hairlines no-margin">
+                <ul class="user-profile-info">
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-subtitle color-purple">Country</div>
+                        <div class="item-title-row">
+                          <div class="item-title">${NA(data.Response[0].Country)}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-subtitle color-purple">Mobile Number</div>
+                        <div class="item-title-row">
+                          <div class="item-title">${NA(data.Response[0].MobileNo)}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-subtitle color-purple">Email</div>
+                        <div class="item-title-row">
+                          <div class="item-title">${NA(data.Response[0].EmailId)}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-subtitle color-purple">Firm Name</div>
+                        <div class="item-title-row">
+                          <div class="item-title">${NA(data.Response[0].FirmName)}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-subtitle color-purple">Owner Name</div>
+                        <div class="item-title-row">
+                          <div class="item-title">${NA(data.Response[0].OwnerName)}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-subtitle color-purple">Date of Birth</div>
+                        <div class="item-title-row">
+                          <div class="item-title">${NA(data.Response[0].DOB)}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-subtitle color-purple">Business Address</div>
+                        <div class="item-title-row">
+                          <div class="item-title">${NA(data.Response[0].BAddress)}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-subtitle color-purple">Business State</div>
+                        <div class="item-title-row">
+                          <div class="item-title">${NA(data.Response[0].BState)}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-subtitle color-purple">Business District</div>
+                        <div class="item-title-row">
+                          <div class="item-title">${NA(data.Response[0].BDistrict)}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-subtitle color-purple">Business City</div>
+                        <div class="item-title-row">
+                          <div class="item-title">${NA(data.Response[0].BCity)}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-subtitle color-purple">Business Address</div>
+                        <div class="item-title-row">
+                          <div class="item-title">${NA(data.Response[0].BAddress)}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-subtitle color-purple">Business Pincode</div>
+                        <div class="item-title-row">
+                          <div class="item-title">${NA(data.Response[0].BPincode)}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-subtitle color-purple">Reference1</div>
+                        <div class="item-title-row">
+                          <div class="item-title">${NA(data.Response[0].Guarantor1Name)}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-subtitle color-purple">Reference Mobile</div>
+                        <div class="item-title-row">
+                          <div class="item-title">${NA(data.Response[0].Guarantor1Mobile)}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-subtitle color-purple">Reference2</div>
+                        <div class="item-title-row">
+                          <div class="item-title">${NA(data.Response[0].Guarantor2Name)}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-subtitle color-purple">Reference Mobile</div>
+                        <div class="item-title-row">
+                          <div class="item-title">${NA(data.Response[0].Guarantor2Mobile)}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-subtitle color-purple">GST Number</div>
+                        <div class="item-title-row">
+                          <div class="item-title">${NA(data.Response[0].GSTNo)}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-subtitle color-purple">Shipping Address1</div>
+                        <div class="item-title-row">
+                          <div class="item-title">${NA(data.Response[0].ShippingAddress1)}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-subtitle color-purple">Shipping Country1</div>
+                        <div class="item-title-row">
+                          <div class="item-title">${NA(data.Response[0].ShippingCountry1)}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-subtitle color-purple">Shipping City1</div>
+                        <div class="item-title-row">
+                          <div class="item-title">${NA(data.Response[0].ShippingCity1)}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-subtitle color-purple">Shipping State1</div>
+                        <div class="item-title-row">
+                          <div class="item-title">${NA(data.Response[0].ShippingState1)}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-subtitle color-purple">Shipping District1</div>
+                        <div class="item-title-row">
+                          <div class="item-title">${NA(data.Response[0].ShippingDistrict1)}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-subtitle color-purple">Shipping Zone1</div>
+                        <div class="item-title-row">
+                          <div class="item-title">${NA(data.Response[0].ShippingZone1)}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-subtitle color-purple">Shipping Email1</div>
+                        <div class="item-title-row">
+                          <div class="item-title">${NA(data.Response[0].ShippingEmail1)}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-inner">
+                        <div class="item-subtitle color-purple">Shipping Pin1</div>
+                        <div class="item-title-row">
+                          <div class="item-title">${NA(data.Response[0].ShippingPin1)}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>`;
+                $$('#user-profile-page .page-content').html(html);
+              }
+              else {
+                app.dialog.alert(data.ErrorMessage);
+              }
+            },
+            complete: function (xhr, status) {
+              SpinnerPlugin.activityStop();
+            }
+          })
+        }
+      }
+    }
+  }
+</script>

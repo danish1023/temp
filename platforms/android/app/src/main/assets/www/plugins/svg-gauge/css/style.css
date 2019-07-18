@@ -1,0 +1,74 @@
+.campaign-container {
+  position: relative;
+  text-align: center;
+}
+
+.campaign-output {
+  line-height: 35px;
+  width: 60px;
+  height: 30px;
+  background-color: #6F2755;
+  border-radius: 60px 60px 0 0;
+  position: absolute;
+  bottom: 0;
+    left: 50%;
+    text-align: center;
+    transform: translateX(-50%);
+}
+
+.initialValue {
+  border: none;
+  border-bottom: 1px solid #6F2755;
+  color: #6F2755;
+  display: block;
+  width: 3em;
+  background-color: transparent;
+  margin: 1em auto;
+  outline: none;
+  font-size: 16px;
+  text-align: center;
+}
+/*SVG*/
+
+svg {
+  margin: 0px;
+  padding: 0;
+  cursor: pointer;
+/*  border: 1px solid #0a1a17;*/
+}
+
+svg.focusable {
+  border: 1px solid #E0AACC;
+}
+
+.campaign-outline,
+.campaign-fill,
+.campaign-center,
+.campaign-needle,
+.scale,
+.campaign-output {
+  pointer-events: none;
+}
+
+.campaign-outline {
+  fill: #E0AACC;
+}
+
+.campaign-fill {
+  fill: #6F2755;
+}
+
+.campaign-needle {
+  fill: #aa0000;
+}
+
+.scale {
+  stroke: #6F2755;
+}
+
+text {
+  text-anchor: middle;
+  dominant-baseline: alphabetic;
+  font: 12px verdana, sans-serif;
+  fill: #6F2755;
+}

@@ -1,0 +1,31 @@
+<template>
+  <div class="page" id="queryprelogin-submit-page">
+    <div class="page-content bg-color-white">
+      <div class="block text-align-center no-margin-bottom">
+        <img src="img/success.png" />
+      </div>
+      <div class="block text-align-center no-margin-top">
+        <p class="margin font-16"><span class="color-green">Thank you !!</span> Your query has been submitted. Our
+          team will get back to you in next 24 hour.
+        </p>
+        <div class="row">
+          <div class="col-50">
+            <a href="/" data-force="true" class="button button-outline button-round link back">Back To Login</a>
+          </div>
+          <div class="col-50">
+            <a href="/query-prelogin/" data-force="true" class="button button-outline button-round link back">Add New Query</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+  return {
+    on: {
+      pageInit: function (e, page) {
+
+      },
+    },
+  }
+</script>

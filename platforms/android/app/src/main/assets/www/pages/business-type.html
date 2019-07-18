@@ -1,0 +1,62 @@
+<template>
+  <div class="page" id="business-type-page">
+    <div class="page-content">
+      <div class="block text-align-center">
+        <img width="40" src="img/select.png" />
+        <h3 class="margin color-purple">Select Your Business Type</h3>
+      </div>
+      <div class="block text-align-center">
+        <div class="row">
+          <div class="col-50">
+            <img class="businesstype-selection" style="width:100%;" src="img/wholesaler.png" />
+            <input type="radio" name="business_type" value="W" style="visibility:hidden" />
+          </div>
+          <div class="col-50">
+            <img class="businesstype-selection" style="width:100%" src="img/retailer.png" />
+            <input type="radio" name="business_type" value="R" style="visibility:hidden" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-50">
+            <img class="businesstype-selection" style="width:100%" src="img/onlineseller.png" />
+            <input type="radio" name="business_type" value="C" style="visibility:hidden" />
+          </div>
+          <div class="col-50">
+            <img class="businesstype-selection" style="width:100%" src="img/others.png" />
+            <input type="radio" name="business_type" value="O" style="visibility:hidden" />
+          </div>
+        </div>
+        <a @click="Next" class="font-16 button button-raised button-fill button-round" href="#">NEXT</a>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+  return {
+    on: {
+      pageInit: function () {
+        $$('#business-type-page .businesstype-selection').on('click', function () {
+          $$(this).parent().find("input[type=radio]").prop('checked', true);
+          $$('#business-type-page .businesstype-selection').removeClass('selected-business-radio');
+          $$(this).addClass('selected-business-radio');
+        });
+      },
+    },
+    methods: {
+      Next: function () {
+        var WSType = $$('#business-type-page input[name=business_type]:checked').val();
+        var Country = this.$route.params.Country;
+        var MobileNo = this.$route.params.MobileNo;
+        if (WSType) {
+          app.views.main.router.navigate({
+            name: 'register',
+            params: { 'WSType': WSType, 'Country': Country, 'MobileNo': MobileNo },
+          });
+        }
+        else {
+          app.dialog.alert('Please select business type');
+        }
+      }
+    }
+  }
+</script>

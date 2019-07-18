@@ -1,0 +1,41 @@
+<template>
+  <div class="page" id="about-page">
+    <div class="navbar">
+      <div class="navbar-inner sliding bg-color-white color-purple">
+        <div class="left">
+          <a href="#" class="link back">
+            <i class="material-icons">arrow_back</i>
+          </a>
+        </div>
+        <div class="title">About Us</div>
+      </div>
+    </div>
+    <div class="page-content">
+      <iframe @load="hideLoader" src="{{HomeURL}}/admin/aboutUs.htm" width="100%" height="100%" style="border: none;">
+      </iframe>
+      <div class="preloader-parent">
+        <div style="position: absolute;transform: translate(-50%,-50%);left: 46%;top: 46%;" class="preloader color-purple">
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+  return {
+    on: {
+      pageInit: function () {
+
+      },
+    },
+    methods: {
+      hideLoader: function () {
+        $$('#about-page .preloader-parent').hide();
+      }
+    },
+    data: function () {
+      return {
+        HomeURL: HomeURL,
+      }
+    }
+  }
+</script>

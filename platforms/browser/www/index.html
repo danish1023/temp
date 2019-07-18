@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="theme-color" content="#2196f3">
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap:">
+  <title>Tejoo</title>
+  <link rel="stylesheet" href="framework7/css/framework7.css">
+  <link rel="stylesheet" href="plugins/framework7-plugin-keypad/framework7.keypad.css">
+  <link rel="stylesheet" href="plugins/svg-gauge/css/style.css">
+  <link rel="stylesheet" href="plugins/spin/css/style.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+
+<body class="color-theme-purple">
+  <div id="app">
+    <div class="statusbar"></div>
+    <!-- Left Panel -->
+    <div class="panel panel-left panel-cover">
+      <div class="page">
+        <div class="page-content bg-color-white">
+          <div class="navbar bg-color-red color-white">
+            <div class="navbar-inner sliding">
+              <div class="title">Main Menu</div>
+            </div>
+          </div>
+          <div class="list no-hairlines no-hairlines-between margin-top-8px">
+            <ul>
+              <li class="with-border">
+                <a href="#" class="item-link item-content">
+                  <div class="item-media">
+                    <i class="material-icons color-darkgray">business</i>
+                  </div>
+                  <div class="item-inner no-background-image">
+                    <div class="item-title">About Program</div>
+                  </div>
+                </a>
+              </li>
+              <li class="with-border">
+                <a href="#" class="item-link item-content">
+                  <div class="item-media">
+                    <i class="material-icons color-darkgray">person</i>
+                  </div>
+                  <div class="item-inner no-background-image">
+                    <div class="item-title">My Profile</div>
+                  </div>
+                </a>
+              </li>
+              <li class="with-border">
+                <a href="#" class="item-link item-content">
+                  <div class="item-media">
+                    <i class="material-icons color-darkgray">settings_overscan</i>
+                  </div>
+                  <div class="item-inner no-background-image">
+                    <div class="item-title">Scan QR Code</div>
+                  </div>
+                </a>
+              </li>
+              <li class="with-border">
+                <a href="#" class="item-link item-content">
+                  <div class="item-media">
+                    <i class="material-icons color-darkgray">receipt</i>
+                  </div>
+                  <div class="item-inner no-background-image">
+                    <div class="item-title">A/C Statement</div>
+                  </div>
+                </a>
+              </li>
+              <li class="with-border">
+                <a href="#" class="item-link item-content">
+                  <div class="item-media">
+                    <i class="material-icons color-darkgray">assignment</i>
+                  </div>
+                  <div class="item-inner no-background-image">
+                    <div class="item-title">User Guide</div>
+                  </div>
+                </a>
+              </li>
+              <li class="with-border">
+                <a href="#" class="item-link item-content">
+                  <div class="item-media">
+                    <i class="material-icons color-darkgray">info</i>
+                  </div>
+                  <div class="item-inner no-background-image">
+                    <div class="item-title">T & C</div>
+                  </div>
+                </a>
+              </li>
+              <li class="with-border">
+                <a href="#" class="item-link item-content">
+                  <div class="item-media">
+                    <i class="material-icons color-darkgray">phone</i>
+                  </div>
+                  <div class="item-inner no-background-image">
+                    <div class="item-title">Contact Us</div>
+                  </div>
+                </a>
+              </li>
+              <li class="with-border">
+                <a href="/change-password/" class="item-link item-content panel-close">
+                  <div class="item-media">
+                    <i class="material-icons color-darkgray">vpn_key</i>
+                  </div>
+                  <div class="item-inner no-background-image">
+                    <div class="item-title">Change Password</div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a onclick="logout()" href="#" class="item-link item-content panel-close">
+                  <div class="item-media">
+                    <i class="material-icons color-darkgray">exit_to_app</i>
+                  </div>
+                  <div class="item-inner no-background-image">
+                    <div class="item-title">Logout</div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="version-number block block-strong no-margin-bottom text-align-center text-color-gray" style="position: absolute;width: 100%;bottom: 0; font-weight: bold;"></div>
+        </div>
+      </div>
+    </div>
+    <!-- Right Panel -->
+    <div class="panel panel-right panel-reveal">
+      <div class="view view-init view-right" name="right" data-url="/">
+        <div class="page">
+          <div class="navbar">
+            <div class="navbar-inner sliding">
+              <div class="title">Right Panel</div>
+            </div>
+          </div>
+          <div class="page-content">
+            <!-- Right Panel Content Goes Here -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="view view-main view-init ios-edges" data-url="/">
+      <div class="page">
+        <div class="page-content" id="loginpage">
+          <!-- Main Content Goes Here -->
+          <div class="block text-align-center">
+            <img class="margin-top" style="width:150px; margin-bottom: 15%" src="img/logo.png" />
+            <h4 class="text-align-left margin-left color-purple">
+              <img style="vertical-align:middle" width="14" src="img/compose.png" /> Enter Your Details</h4>
+            <form class="list show-hairlines-ios no-hairlines text-align-left no-margin" id="login-form">
+              <ul class="no-hairlines-between">
+                <li class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-title item-label">Country</div>
+                    <div class="item-input-wrap input-dropdown-wrap">
+                      <select name="Country" onchange="putCountryCode(this.value)">
+
+                      </select>
+                    </div>
+                  </div>
+                </li>
+                <li class="item-content">
+                  <div class="row no-gap" style="width:100%">
+                    <div class="col-15">
+                      <div class="item-content item-input no-padding">
+                        <div class="item-inner no-padding-right">
+                          <div class="item-title item-label">&nbsp;</div>
+                          <div class="item-input-wrap">
+                            <input type="text" value="+91" name="country_code" readonly>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-85">
+                      <div class="item-content item-input no-padding">
+                        <div class="item-inner">
+                          <div class="item-title item-label">&nbsp;</div>
+                          <div class="item-input-wrap">
+                            <input onfocus="inputActive();" onblur="inputDeactive();" type="tel" name="MobileNo" placeholder="Enter Mobile Number">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-title item-label">&nbsp;</div>
+                    <div class="item-input-wrap">
+                      <input type="email" name="EmailId" placeholder="Enter Email ID">
+                    </div>
+                  </div>
+                </li>
+                <li class="item-content">
+                  <div class="row no-gap margin-top margin-bottom" style="width:100%">
+                    <div class="col-55">
+                      <label class="item-radio item-content no-padding">
+                        <input type="radio" name="ExistingMember" value="Yes" checked />
+                        <i class="icon icon-radio"></i>
+                        <div class="item-inner no-padding radio-no-hairlines">
+                          <div class="item-title">Existing Customer</div>
+                        </div>
+                      </label>
+                    </div>
+                    <div class="col-45">
+                      <label class="item-radio item-content no-padding">
+                        <input type="radio" name="ExistingMember" value="No" />
+                        <i class="icon icon-radio"></i>
+                        <div class="item-inner no-padding radio-no-hairlines">
+                          <div class="item-title">New Customer</div>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                </li>
+                <li class="item-content item-input">
+                  <div class="item-inner margin-top">
+                    <a href="#" onclick="login()" class="font-16 button button-raised button-fill button-round">LOGIN</a>
+                  </div>
+                </li>
+                <li class="item-content item-input">
+                  <div class="item-inner text-align-center">
+                    We will send 4-digit verification code to this Mobile Number/Email ID
+                  </div>
+                </li>
+                <li class="item-content item-input">
+                  <div class="item-inner text-align-center">
+                    <a href="/query-prelogin/">Any Query? Click Here</a>
+                  </div>
+                </li>
+              </ul>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="framework7/js/framework7.min.js"></script>
+  <script src="plugins/framework7-plugin-keypad/framework7.keypad.js"></script>
+  <script src="js/routes.js"></script>
+  <script src="js/app.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.23.0/moment.min.js"></script>
+  <script type="text/javascript" src="cordova.js"></script>
+  <script>
+    document.addEventListener("deviceready", onDeviceReady, false);
+    document.addEventListener("backbutton", onBackKeyDown, false);
+    function onDeviceReady() {
+      cordova.getAppVersion.getVersionNumber(function (version) {
+        $$('.version-number').text('Version: ' + version);
+      });
+      const push = PushNotification.init({
+        android: {
+        },
+        browser: {
+          pushServiceURL: 'http://push.api.phonegap.com/v1/push'
+        },
+        ios: {
+          alert: "true",
+          badge: "true",
+          sound: "true"
+        },
+        windows: {}
+      });
+
+      push.on('registration', (data) => {
+        localStorage.setItem("fcm_token", data.registrationId);
+      });
+    }
+    function onBackKeyDown(e) {
+      e.preventDefault();
+      if (app.views.main.router.currentRoute.url == "/" || app.views.main.router.currentRoute.url == "/dashboard/" || app.views.main.router.currentRoute.url == "/guest-dashboard/") {
+        navigator.app.exitApp();
+      }
+      else {
+        mainView.router.back();
+      }
+    }
+  </script>
+</body>
+
+</html>

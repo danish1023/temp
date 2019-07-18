@@ -1,0 +1,370 @@
+<template>
+  <div class="page" id="register-page">
+    <div class="navbar">
+      <div class="navbar-inner sliding bg-color-white color-purple">
+        <div class="left">
+          <a href="#" class="link back">
+            <i class="material-icons">arrow_back</i>
+          </a>
+        </div>
+        <div class="title">Create an account</div>
+      </div>
+    </div>
+    <div class="toolbar toolbar-bottom-md bg-color-white" style="padding:30px">
+      <div class="toolbar-inner padding">
+        <a href="#" @click="signup" style="width:100%;text-transform: uppercase" class="button button-fill button-round font-16">Submit</a>
+      </div>
+    </div>
+    <div class="page-content bg-color-white">
+      <div class="block text-align-center no-margin-bottom">
+        <img width="40" src="img/compose.png" />
+        <h3 class="margin color-purple">Sign Up</h3>
+      </div>
+      <form class="list show-hairlines-ios no-hairlines" id="signup-form">
+        <div class="block no-margin text-align-center">
+          <img id="RegisterProfileImage" @click="openSheet" style="border-radius:50%;width:100px;height:100px" src="img/default-avatar.png">
+        </div>
+        <ul class="no-hairlines-between">
+          <li class="item-content item-input">
+            <div class="item-media">
+              <i class="material-icons color-gray">phone_android</i>
+            </div>
+            <div class="item-inner">
+              <div class="item-title item-floating-label">Mobile Number*</div>
+              <div class="item-input-wrap">
+                <input type="tel" name="WholesalerMobileNo" value="{{MobileNo}}" readonly>
+              </div>
+            </div>
+          </li>
+          <li class="item-content item-input">
+            <div class="item-media">
+              <i class="material-icons color-gray">store</i>
+            </div>
+            <div class="item-inner">
+              <div class="item-title item-floating-label">Shop Name*</div>
+              <div class="item-input-wrap">
+                <input type="text" name="FirmName" placeholder="Enter Shop Name" required validate>
+              </div>
+            </div>
+          </li>
+          <li class="item-content item-input">
+            <div class="item-media">
+              <i class="material-icons color-gray">person</i>
+            </div>
+            <div class="item-inner">
+              <div class="item-title item-floating-label">Name</div>
+              <div class="item-input-wrap">
+                <input type="text" name="WholesalerName" placeholder="Enter Name" validate>
+              </div>
+            </div>
+          </li>
+          <li class="item-content item-input">
+            <div class="item-media">
+              <i class="material-icons color-gray">date_range</i>
+            </div>
+            <div class="item-inner">
+              <div class="item-title item-floating-label">Date of Birth</div>
+              <div class="item-input-wrap">
+                <input type="text" name="DateofBirth" placeholder="Enter Date of Birth" validate>
+              </div>
+            </div>
+          </li>
+          <li class="item-content item-input">
+            <div class="item-media">
+              <i class="material-icons color-gray">place</i>
+            </div>
+            <div class="item-inner">
+              <div class="item-title item-floating-label">Business Address*</div>
+              <div class="item-input-wrap">
+                <input type="text" name="BusinessAddress" placeholder="Enter Business Address" required validate>
+              </div>
+            </div>
+          </li>
+          <li class="item-content item-input">
+            <div class="item-media">
+              <i class="material-icons color-gray">location_city</i>
+            </div>
+            <div class="item-inner">
+              <div class="item-title item-floating-label">Business State*</div>
+              <div class="item-input-wrap">
+                <input type="text" name="BusinessState" placeholder="Enter Business State" required validate>
+              </div>
+            </div>
+          </li>
+          <li class="item-content item-input">
+            <div class="item-media">
+              <i class="material-icons color-gray">local_taxi</i>
+            </div>
+            <div class="item-inner">
+              <div class="item-title item-floating-label">Business District*</div>
+              <div class="item-input-wrap">
+                <input type="text" name="BusinessDistrict" placeholder="Enter Business District" required validate>
+              </div>
+            </div>
+          </li>
+          <li class="item-content item-input">
+            <div class="item-media">
+              <i class="material-icons color-gray">navigation</i>
+            </div>
+            <div class="item-inner">
+              <div class="item-title item-floating-label">Business City*</div>
+              <div class="item-input-wrap">
+                <input type="text" name="BusinessCity" placeholder="Enter Business City" required validate>
+              </div>
+            </div>
+          </li>
+          <li class="item-content item-input">
+            <div class="item-media">
+              <i class="material-icons color-gray">directions_walk</i>
+            </div>
+            <div class="item-inner">
+              <div class="item-title item-floating-label">Business Pin Code*</div>
+              <div class="item-input-wrap">
+                <input type="text" name="BusinessPinCode" placeholder="Enter Business Pin code" required validate>
+              </div>
+            </div>
+          </li>
+          <li class="item-content item-input">
+            <div class="item-media">
+              <i class="material-icons color-gray">person</i>
+            </div>
+            <div class="item-inner">
+              <div class="item-title item-floating-label">Reference 1*</div>
+              <div class="item-input-wrap">
+                <input type="text" name="Guarantor1Name" placeholder="Enter Reference 1" required validate>
+              </div>
+            </div>
+          </li>
+          <li class="item-content item-input">
+            <div class="item-media">
+              <i class="material-icons color-gray">phone_android</i>
+            </div>
+            <div class="item-inner">
+              <div class="item-title item-floating-label">Reference Mobile Number*</div>
+              <div class="item-input-wrap">
+                <input type="tel" name="GuarantorMobileNo1" placeholder="Enter Reference Mobile Number" required validate>
+              </div>
+            </div>
+          </li>
+          <li class="item-content item-input">
+            <div class="item-media">
+              <i class="material-icons color-gray">person</i>
+            </div>
+            <div class="item-inner">
+              <div class="item-title item-floating-label">Reference 2*</div>
+              <div class="item-input-wrap">
+                <input type="text" name="Guarantor2Name" placeholder="Enter Reference 2" required validate>
+              </div>
+            </div>
+          </li>
+          <li class="item-content item-input">
+            <div class="item-media">
+              <i class="material-icons color-gray">phone_android</i>
+            </div>
+            <div class="item-inner">
+              <div class="item-title item-floating-label">Reference Mobile Number*</div>
+              <div class="item-input-wrap">
+                <input type="tel" name="GuarantorMobileNo2" placeholder="Enter Reference Mobile Number" required validate>
+              </div>
+            </div>
+          </li>
+          <li class="item-content item-input">
+            <div class="item-media">
+              <i class="material-icons color-gray">receipt</i>
+            </div>
+            <div class="item-inner">
+              <div class="item-title item-floating-label">GST Number</div>
+              <div class="item-input-wrap">
+                <input type="text" name="GSTNo" maxlength="15" validate pattern="[A-Za-z0-9]{15,15}" placeholder="Enter GST Number" data-error-message="Enter 15 Digit GST Number"
+                  validate>
+              </div>
+            </div>
+          </li>
+          <li class="item-content item-input">
+            <div class="item-media">
+              <i class="material-icons color-gray">email</i>
+            </div>
+            <div class="item-inner">
+              <div class="item-title item-floating-label">Email ID</div>
+              <div class="item-input-wrap">
+                <input type="email" name="EmailID" placeholder="Enter Email ID" validate>
+              </div>
+            </div>
+          </li>
+          <li class="item-content item-input">
+            <div class="item-media">
+              <i class="material-icons color-gray">local_parking</i>
+            </div>
+            <div class="item-inner">
+              <div class="item-title item-floating-label">PAN Number</div>
+              <div class="item-input-wrap">
+                <input type="text" name="PANNo" maxlength="10" validate pattern="[A-Za-z0-9]{10,10}" placeholder="Enter PAN Number" data-error-message="Enter 10 Digit PAN Number"
+                  validate>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </form>
+    </div>
+  </div>
+</template>
+<script>
+  var ProfilePic = '';
+  return {
+    data: function () {
+      return {
+        MobileNo: this.$route.params.MobileNo,
+      }
+    },
+    methods: {
+      signup: function () {
+        var WSType = this.$route.params.WSType;
+        var Country = this.$route.params.Country;
+        var WholesalerMobileNo = this.$route.params.MobileNo;
+        if ($$('#signup-form')[0].checkValidity()) {
+          //var WholesalerMobileNo = $$('#signup-form input[name=WholesalerMobileNo]').val();
+          var FirmName = $$('#signup-form input[name=FirmName]').val();
+          var WholesalerName = $$('#signup-form input[name=WholesalerName]').val();
+          var DateofBirth = $$('#signup-form input[name=DateofBirth]').val();
+          var BusinessAddress = $$('#signup-form input[name=BusinessAddress]').val();
+          var BusinessState = $$('#signup-form input[name=BusinessState]').val();
+          var BusinessDistrict = $$('#signup-form input[name=BusinessDistrict]').val();
+          var BusinessCity = $$('#signup-form input[name=BusinessCity]').val();
+          var BusinessPinCode = $$('#signup-form input[name=BusinessPinCode]').val();
+          var Guarantor1Name = $$('#signup-form input[name=Guarantor1Name]').val();
+          var GuarantorMobileNo1 = $$('#signup-form input[name=GuarantorMobileNo1]').val();
+          var Guarantor2Name = $$('#signup-form input[name=Guarantor2Name]').val();
+          var GuarantorMobileNo2 = $$('#signup-form input[name=GuarantorMobileNo2]').val();
+          var GSTNo = $$('#signup-form input[name=GSTNo]').val();
+          var EmailID = $$('#signup-form input[name=EmailID]').val();
+          var PANNo = $$('#signup-form input[name=PANNo]').val();
+
+          var obj = {
+            Country: Country,
+            WSType: WSType,
+            WholesalerMobileNo: WholesalerMobileNo,
+            FirmName: FirmName,
+            WholesalerName: WholesalerName,
+            DateofBirth: DateofBirth,
+            BusinessAddress: BusinessAddress,
+            BusinessState: BusinessState,
+            BusinessDistrict: BusinessDistrict,
+            BusinessCity: BusinessCity,
+            BusinessPinCode: BusinessPinCode,
+            Guarantor1Name: Guarantor1Name,
+            GuarantorMobileNo1: GuarantorMobileNo1,
+            Guarantor2Name: Guarantor2Name,
+            GuarantorMobileNo2: GuarantorMobileNo2,
+            GSTNo: GSTNo,
+            EmailID: EmailID,
+            PANNo: PANNo,
+            ProfilePic: ProfilePic,
+          };
+
+          app.request({
+            url: BaseURL + '/WholesalerRegistration',
+            method: 'POST',
+            dataType: 'json',
+            data: obj,
+            contentType: 'application/json',
+            beforeSend: function (xhr) {
+              xhr.setRequestHeader("Authorization", "Basic " + btoa(AuthUsername + ":" + AuthPassword));
+              var spinnerOptions = { dimBackground: false };
+              SpinnerPlugin.activityStart(null, spinnerOptions);
+            },
+            error: function (xhr, status) {
+              alert(statusMessage(status));
+            },
+            success: function (data, status, xhr) {
+              if (data.ErrorCode == '0') {
+                app.dialog.alert('wait for your authorization', function () {
+                  app.views.main.router.navigate({
+                    name: 'guest-dashboard',
+                  });
+                });
+              }
+              else {
+                app.dialog.alert(data.ErrorMessage);
+              }
+            },
+            complete: function (xhr, status) {
+              SpinnerPlugin.activityStop();
+            }
+          })
+        }
+      },
+      openGallery: function () {
+        navigator.camera.getPicture(onSuccess, onFail, {
+          quality: 100,
+          targetWidth: 512,
+          targetHeight: 512,
+          correctOrientation: true,
+          sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+          destinationType: Camera.DestinationType.DATA_URL,
+        });
+        function onSuccess(imageData) {
+          var image = document.getElementById('RegisterProfileImage');
+          image.src = "data:image/jpeg;base64," + imageData;
+          ProfilePic = imageData;
+        }
+        function onFail(message) {
+          console.log(message);
+        }
+      },
+      openCamera: function () {
+        navigator.camera.getPicture(onSuccess, onFail, {
+          quality: 100,
+          targetWidth: 512,
+          targetHeight: 512,
+          correctOrientation: true,
+          sourceType: Camera.PictureSourceType.CAMERA,
+          destinationType: Camera.DestinationType.DATA_URL,
+        });
+        function onSuccess(imageData) {
+          var image = document.getElementById('RegisterProfileImage');
+          image.src = "data:image/jpeg;base64," + imageData;
+          ProfilePic = imageData;
+        }
+        function onFail(message) {
+          console.log(message);
+        }
+      },
+      openSheet: function () {
+        var self = this;
+        var sheet = app.actions.create({
+          buttons: [
+            {
+              text: 'Choose one',
+              label: true,
+            },
+            {
+              text: 'Gallery',
+              bold: true,
+              onClick: function () {
+                self.openGallery();
+              }
+            },
+            {
+              text: 'Camera',
+              onClick: function () {
+                self.openCamera();
+              }
+            },
+          ]
+        });
+        sheet.open();
+      }
+    },
+    on: {
+      pageInit: function (e, page) {
+        var FromDateCalendar = app.calendar.create({
+          inputEl: '#register-page input[name=DateofBirth]',
+          openIn: 'customModal',
+          header: true,
+          dateFormat: 'dd-M-yyyy',
+          closeOnSelect: true
+        });
+      }
+    }
+  }
+</script>

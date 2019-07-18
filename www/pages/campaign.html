@@ -1,0 +1,573 @@
+<template>
+  <div class="page" id="campaign-page">
+    <div class="navbar">
+      <div class="navbar-inner sliding bg-color-white color-purple">
+        <div class="left">
+          <a href="#" class="link back">
+            <i class="material-icons">arrow_back</i>
+          </a>
+        </div>
+        <div class="title">Campaign</div>
+      </div>
+    </div>
+    <div class="page-content bg-color-white">
+      <div class="modal" id="spinmodal1">
+        <div class="modal-content">
+          <strong class="close" id="close1">&times;</strong>
+          <img style="width:100%" src="" alt="">
+          <h4></h4>
+          <br>
+          <b></b>
+        </div>
+      </div>
+      <div class="modal" id="spinmodal2">
+        <div class="modal-content">
+          <strong class="close" id="close2">&times;</strong>
+          <img style="width:100%" src="" alt="">
+          <h4></h4>
+          <br>
+          <b></b>
+        </div>
+      </div>
+      <div class="modal" id="spinmodal3">
+        <div class="modal-content">
+          <strong class="close" id="close3">&times;</strong>
+          <img style="width:100%" src="" alt="">
+          <h4></h4>
+          <br>
+          <b></b>
+        </div>
+      </div>
+      <div class="modal" id="spinmodal4">
+        <div class="modal-content">
+          <strong class="close" id="close4">&times;</strong>
+          <img style="width:100%" src="" alt="">
+          <h4></h4>
+          <br>
+          <b></b>
+        </div>
+      </div>
+      <div class="modal" id="spinmodal5">
+        <div class="modal-content">
+          <strong class="close" id="close5">&times;</strong>
+          <img style="width:100%" src="" alt="">
+          <h4></h4>
+          <br>
+          <b></b>
+        </div>
+      </div>
+      <div class="modal" id="spinmodal6">
+        <div class="modal-content">
+          <strong class="close" id="close6">&times;</strong>
+          <img style="width:100%" src="" alt="">
+          <h4></h4>
+          <br>
+          <b></b>
+        </div>
+      </div>
+      <div class="modal" id="spinmodal7">
+        <div class="modal-content">
+          <strong class="close" id="close7">&times;</strong>
+          <img style="width:100%" src="" alt="">
+          <h4></h4>
+          <br>
+          <b></b>
+        </div>
+      </div>
+      <div class="modal" id="spinmodal8">
+        <div class="modal-content">
+          <strong class="close" id="close8">&times;</strong>
+          <img style="width:100%" src="" alt="">
+          <h4></h4>
+          <br>
+          <b></b>
+        </div>
+      </div>
+      <div class="modal" id="spinmodal9">
+        <div class="modal-content">
+          <strong class="close" id="close9">&times;</strong>
+          <img style="width:100%" src="" alt="">
+          <h4></h4>
+          <br>
+          <b></b>
+        </div>
+      </div>
+      <div class="block block-gauge">
+        <div class="campaign-container margin-top">
+          <svg class="campaign-typeRange" height="165" width="330" view-box="0 0 330 165">
+
+            <g class="scale" stroke="red"></g>
+
+            <path class="campaign-outline" d="" />
+            <path class="campaign-fill" d="" />
+            <polygon class="campaign-needle" points="" />
+          </svg>
+          <div class="campaign-output color-white"></div>
+        </div>
+        <input type="text" class="initialValue" value="0" style="display: none" />
+      </div>
+      <div class="block">
+        <div class="campaign-title text-align-center color-purple">Billing Amount</div>
+        <div class="outer-container margin-top margin-bottom">
+          <h4 class="wish">For Prize Detail Click Below Area</h4>
+          <div class="container">
+            <div class="arrow"></div>
+            <div class="wheel">
+              <div class="inner-wheel" id="wheel">
+                <a href="#" class="section love">
+                  <span id="wheelBtn9" class="b-day spin-span">1 Cr +
+                    <br>Maruti
+                    <br>Ciaz</span>
+                </a>
+                <a href="#" class="section">
+                  <span id="wheelBtn1" class="vertical joy silver spin-span">3 Lac +
+                    <br>Silver
+                    <br>Plate</span>
+                </a>
+                <a href="#" class="section">
+                  <span id="wheelBtn2" class="vertical j7 spin-span">6 Lac +
+                    <br>Sam-
+                    <br>sung
+                    <br>J7</span>
+                </a>
+                <a href="#" class="section">
+                  <span id="wheelBtn3" class="vertical gold spin-span">11 Lac +
+                    <br>Gold
+                    <br>Coin</span>
+                </a>
+                <a href="#" class="section">
+                  <span id="wheelBtn4" class="vertical activa spin-span">18 Lac +
+                    <br>Activa
+                    <br>5G</span>
+                </a>
+                <a href="#" class="section">
+                  <span id="wheelBtn5" class="vertical dubai spin-span">30 Lac +
+                    <br>Dubai
+                    <br>Trip</span>
+                </a>
+                <a href="#" class="section">
+                  <span id="wheelBtn6" class="vertical alto spin-span">40 Lac +
+                    <br>Alto
+                    <br>800</span>
+                </a>
+                <a href="#" class="section">
+                  <span id="wheelBtn7" class="vertical wagonr spin-span">60 Lac +
+                    <br>WagonR
+                    <br>Minor</span>
+                </a>
+                <a href="#" class="section">
+                  <span id="wheelBtn8" class="vertical dzire spin-span">75 Lac +
+                    <br>Swift
+                    <br>Dzire</span>
+                </a>
+              </div>
+              <div class="spin-button" data-value=""></div>
+            </div>
+          </div>
+        </div>
+        <div class="campaign-title text-align-center color-purple">Received Amount</div>
+      </div>
+    </div>
+</template>
+<script>
+  return {
+    on: {
+      pageInit: function (e, page) {
+        var User = localStorage.User;
+        var UserData = JSON.parse(User);
+        var obj = {
+          CustomerId: UserData[0].CustomerId,
+          Quarter: 'Q' + moment().quarter().toString(),
+          Year: moment().year().toString(),
+        };
+        app.request({
+          url: BaseURL + '/GetGraph',
+          method: 'POST',
+          dataType: 'json',
+          data: obj,
+          contentType: 'application/json',
+          beforeSend: function (xhr) {
+            xhr.setRequestHeader("Authorization", "Basic " + btoa(AuthUsername + ":" + AuthPassword));
+            var spinnerOptions = { dimBackground: false };
+            SpinnerPlugin.activityStart(null, spinnerOptions);
+          },
+          error: function (xhr, status) {
+            alert(statusMessage(status));
+          },
+          success: function (data, status, xhr) {
+            console.log(data);
+            if (data.ErrorCode == '0') {
+              var RecievedAmount = parseInt(data.Response[0].RecievedAmount);
+              var ShortRecievedAmount = RecievedAmount / 100000 + ' L';
+              var degree = 333.5;
+              if (RecievedAmount < 300000) {
+                degree = 333.5;
+              }
+              if (RecievedAmount >= 300000 && RecievedAmount < 600000) {
+                degree = 315;
+              }
+              if (RecievedAmount >= 600000 && RecievedAmount < 1100000) {
+                degree = 280;
+              }
+              if (RecievedAmount >= 1100000 && RecievedAmount < 1800000) {
+                degree = 250;
+              }
+              if (RecievedAmount >= 1800000 && RecievedAmount < 3000000) {
+                degree = 205;
+              }
+              if (RecievedAmount >= 3000000 && RecievedAmount < 4000000) {
+                degree = 165;
+              }
+              if (RecievedAmount >= 4000000 && RecievedAmount < 6000000) {
+                degree = 125;
+              }
+              if (RecievedAmount >= 6000000 && RecievedAmount < 7500000) {
+                degree = 85;
+              }
+              if (RecievedAmount >= 7500000 && RecievedAmount < 10000000) {
+                degree = 50;
+              }
+              if (RecievedAmount >= 10000000 && RecievedAmount < 50000000) {
+                degree = 0;
+                ShortRecievedAmount = RecievedAmount / 10000000 + ' Cr';
+              }
+              $$('.spin-button').attr('data-value', ShortRecievedAmount);
+              // Spin
+              $$('#spinmodal1').find('img').attr('src', data.Response[0].SchemeDetails[0].GiftImage);
+              $$('#spinmodal1').find('h4').text(data.Response[0].SchemeDetails[0].GiftName);
+              $$('#spinmodal1').find('b').text('(' + data.Response[0].SchemeDetails[0].SlabFrom + ' to ' + data.Response[0].SchemeDetails[0].SlabTo + ')');
+
+              $$('#spinmodal2').find('img').attr('src', data.Response[0].SchemeDetails[1].GiftImage);
+              $$('#spinmodal2').find('h4').text(data.Response[0].SchemeDetails[1].GiftName);
+              $$('#spinmodal2').find('b').text('(' + data.Response[0].SchemeDetails[1].SlabFrom + ' to ' + data.Response[0].SchemeDetails[1].SlabTo + ')');
+
+              $$('#spinmodal3').find('img').attr('src', data.Response[0].SchemeDetails[2].GiftImage);
+              $$('#spinmodal3').find('h4').text(data.Response[0].SchemeDetails[2].GiftName);
+              $$('#spinmodal3').find('b').text('(' + data.Response[0].SchemeDetails[2].SlabFrom + ' to ' + data.Response[0].SchemeDetails[2].SlabTo + ')');
+
+              $$('#spinmodal4').find('img').attr('src', data.Response[0].SchemeDetails[3].GiftImage);
+              $$('#spinmodal4').find('h4').text(data.Response[0].SchemeDetails[3].GiftName);
+              $$('#spinmodal4').find('b').text('(' + data.Response[0].SchemeDetails[3].SlabFrom + ' to ' + data.Response[0].SchemeDetails[3].SlabTo + ')');
+
+              $$('#spinmodal5').find('img').attr('src', data.Response[0].SchemeDetails[4].GiftImage);
+              $$('#spinmodal5').find('h4').text(data.Response[0].SchemeDetails[4].GiftName);
+              $$('#spinmodal5').find('b').text('(' + data.Response[0].SchemeDetails[4].SlabFrom + ' to ' + data.Response[0].SchemeDetails[4].SlabTo + ')');
+
+              $$('#spinmodal6').find('img').attr('src', data.Response[0].SchemeDetails[5].GiftImage);
+              $$('#spinmodal6').find('h4').text(data.Response[0].SchemeDetails[5].GiftName);
+              $$('#spinmodal6').find('b').text('(' + data.Response[0].SchemeDetails[5].SlabFrom + ' to ' + data.Response[0].SchemeDetails[5].SlabTo + ')');
+
+              $$('#spinmodal7').find('img').attr('src', data.Response[0].SchemeDetails[6].GiftImage);
+              $$('#spinmodal7').find('h4').text(data.Response[0].SchemeDetails[6].GiftName);
+              $$('#spinmodal7').find('b').text('(' + data.Response[0].SchemeDetails[6].SlabFrom + ' to ' + data.Response[0].SchemeDetails[6].SlabTo + ')');
+
+              $$('#spinmodal8').find('img').attr('src', data.Response[0].SchemeDetails[7].GiftImage);
+              $$('#spinmodal8').find('h4').text(data.Response[0].SchemeDetails[7].GiftName);
+              $$('#spinmodal8').find('b').text('(' + data.Response[0].SchemeDetails[7].SlabFrom + ' to ' + data.Response[0].SchemeDetails[7].SlabTo + ')');
+
+              $$('#spinmodal9').find('img').attr('src', data.Response[0].SchemeDetails[8].GiftImage);
+              $$('#spinmodal9').find('h4').text(data.Response[0].SchemeDetails[8].GiftName);
+              $$('#spinmodal9').find('b').text('(' + data.Response[0].SchemeDetails[8].SlabFrom + ' to ' + data.Response[0].SchemeDetails[8].SlabTo + ')');
+
+              $$('#wheel').css({ 'transform': 'rotate(' + degree + 'deg)' });
+              // Gauge
+              var BillingAmount = data.Response[0].BillingAmount;
+              if (data.Response[0].BillingAmount >= 1000) {
+                BillingAmount = data.Response[0].BillingAmount / 1000 + 'K';
+              }
+              if (data.Response[0].BillingAmount >= 100000) {
+                BillingAmount = data.Response[0].BillingAmount / 100000 + 'L';
+              }
+              if (data.Response[0].BillingAmount >= 10000000) {
+                BillingAmount = data.Response[0].BillingAmount / 10000000 + 'Cr';
+              }
+              $$('#campaign-page .initialValue').val(data.Response[0].BillingAmount / 100000);
+              $$('#campaign-page .campaign-output').html(BillingAmount);
+              var containersRy = document.querySelector(".campaign-container");
+              var svg = document.querySelector(".campaign-typeRange");
+              var output = document.querySelector(".campaign-output");
+              var outline = document.querySelector(".campaign-outline");
+              var fill = document.querySelector(".campaign-fill");
+              var center = document.querySelector(".campaign-center");
+              var needle = document.querySelector(".campaign-needle");
+
+              var initialValue = document.querySelector(".initialValue");
+
+              var rad = Math.PI / 180;
+              var NS = "http:\/\/www.w3.org/2000/svg";
+
+              var W = parseInt(window.getComputedStyle(svg, null).getPropertyValue("width"));
+              var offset = 40;
+              var cx = ~~(W / 2);
+              var cy = 160;
+
+              var r1 = cx - offset;
+              var delta = ~~(r1 / 4);
+
+              var initVal = initialValue.value;
+
+              var isDragging = false;
+
+              var x1 = cx + r1,
+                y1 = cy;
+              var r2 = r1 - delta;
+
+              var x2 = offset,
+                y2 = cy;
+              var x3 = x1 - delta,
+                y3 = cy;
+
+              function drawScale() {
+                sr1 = r1 + 5;
+                sr2 = r2 - 5;
+                srT = r1 + 20;
+                var scale = document.querySelector(".scale");
+                clearRect(scale)
+                var n = 0;
+                for (var sa = -180; sa <= 0; sa += 36) {
+                  var sx1 = cx + sr1 * Math.cos(sa * rad);
+                  var sy1 = cy + sr1 * Math.sin(sa * rad);
+                  var sx2 = cx + sr2 * Math.cos(sa * rad);
+                  var sy2 = cy + sr2 * Math.sin(sa * rad);
+                  var sxT = cx + srT * Math.cos(sa * rad);
+                  var syT = cy + srT * Math.sin(sa * rad);
+
+                  var scaleLine = document.createElementNS(NS, "line");
+                  var scaleLineObj = {
+                    class: "scale",
+                    x1: sx1,
+                    y1: sy1,
+                    x2: sx2,
+                    y2: sy2
+                  };
+                  setSVGAttributes(scaleLine, scaleLineObj);
+
+                  scale.appendChild(scaleLine);
+
+                  var scaleText = document.createElementNS(NS, "text");
+                  var scaleTextObj = {
+                    class: "scale",
+                    x: sxT,
+                    y: syT,
+                  };
+                  setSVGAttributes(scaleText, scaleTextObj);
+                  //scaleText.textContent = n * 25 + "K";
+                  if (n == 0) {
+                    scaleText.innerHTML = "0";
+
+                  }
+                  if (n == 1) {
+                    scaleText.textContent = "20L";
+                  }
+                  if (n == 2) {
+                    scaleText.textContent = "40L";
+                  }
+                  if (n == 3) {
+                    scaleText.textContent = "60L";
+                  }
+                  if (n == 4) {
+                    scaleText.textContent = "80L";
+                  }
+                  if (n == 5) {
+                    scaleText.textContent = "1CR";
+                  }
+
+                  scale.appendChild(scaleText);
+
+                  n++
+
+                }
+
+              }
+
+              function drawInput(cx, cy, r1, offset, delta, a) {
+
+                var d1 = getD1(cx, cy, r1, offset, delta);
+                var d2 = getD2(cx, cy, r1, offset, delta, a);
+
+                drawScale();
+
+                outline.setAttributeNS(null, "d", d1);
+                fill.setAttributeNS(null, "d", d2);
+
+                drawNeedle(cx, cy, r1, a);
+              }
+
+              function updateInput(p, cx, cy, r1, offset, delta) {
+
+                var x = p.x;
+                var y = p.y;
+                var lx = cx - x;
+                var ly = cy - y;
+
+                var a = Math.atan2(ly, lx) / rad - 180;
+
+                drawInput(cx, cy, r1, offset, delta, a);
+                //output.innerHTML = Math.round((a + 180) / 1.8) + "K";
+                initialValue.value = Math.round((a + 180) / 1.8);
+              }
+
+              function getD1(cx, cy, r1, offset, delta) {
+
+                var x1 = cx + r1,
+                  y1 = cy;
+                var x2 = offset,
+                  y2 = cy;
+                var r2 = r1 - delta;
+                var x3 = x1 - delta,
+                  y3 = cy;
+                var d1 =
+                  "M " + x1 + ", " + y1 + " A" + r1 + "," + r1 + " 0 0 0 " + x2 + "," + y2 + " H" + (offset + delta) + " A" + r2 + "," + r2 + " 0 0 1 " + x3 + "," + y3 + " z";
+                return d1;
+              }
+
+              function getD2(cx, cy, r1, offset, delta, a) {
+                a *= rad;
+                var r2 = r1 - delta;
+                var x4 = cx + r1 * Math.cos(a);
+                var y4 = cy + r1 * Math.sin(a);
+                var x5 = cx + r2 * Math.cos(a);
+                var y5 = cy + r2 * Math.sin(a);
+
+                var d2 =
+                  "M " + x4 + ", " + y4 + " A" + r1 + "," + r1 + " 0 0 0 " + x2 + "," + y2 + " H" + (offset + delta) + " A" + r2 + "," + r2 + " 0 0 1 " + x5 + "," + y5 + " z";
+                return d2;
+              }
+
+              function drawNeedle(cx, cy, r1, a) {
+
+                var nx1 = cx + 5 * Math.cos((a - 90) * rad);
+                var ny1 = cy + 5 * Math.sin((a - 90) * rad);
+
+                var nx2 = cx + (r1 + 15) * Math.cos(a * rad);
+                var ny2 = cy + (r1 + 15) * Math.sin(a * rad);
+
+                var nx3 = cx + 5 * Math.cos((a + 90) * rad);
+                var ny3 = cy + 5 * Math.sin((a + 90) * rad);
+
+                var points = nx1 + "," + ny1 + " " + nx2 + "," + ny2 + " " + nx3 + "," + ny3;
+                needle.setAttributeNS(null, "points", points);
+              }
+
+              function clearRect(node) {
+                while (node.firstChild) {
+                  node.removeChild(node.firstChild);
+                }
+              }
+
+              function setSVGAttributes(elmt, oAtt) {
+                for (var prop in oAtt) {
+                  elmt.setAttributeNS(null, prop, oAtt[prop]);
+                }
+              }
+
+              var pa = (initVal * 1.8) - 180;
+              var p = {}
+              p.x = cx + r1 * Math.cos(pa * rad);
+              p.y = cy + r1 * Math.sin(pa * rad);
+              updateInput(p, cx, cy, r1, offset, delta);
+            }
+            else {
+              app.dialog.alert(data.ErrorMessage);
+            }
+          },
+          complete: function (xhr, status) {
+            SpinnerPlugin.activityStop();
+          }
+        })
+
+        var spinmodal1 = document.getElementById('spinmodal1');
+        var wheelBtn1 = document.getElementById("wheelBtn1");
+        var close1 = document.getElementById("close1");
+        close1.onclick = function () {
+          spinmodal1.style.display = "none";
+        }
+        wheelBtn1.onclick = function () {
+          spinmodal1.style.display = "block";
+        }
+
+        var spinmodal2 = document.getElementById('spinmodal2');
+        var wheelBtn2 = document.getElementById("wheelBtn2");
+        var close2 = document.getElementById("close2");
+        close2.onclick = function () {
+          spinmodal2.style.display = "none";
+        }
+        wheelBtn2.onclick = function () {
+          spinmodal2.style.display = "block";
+        }
+
+        var spinmodal3 = document.getElementById('spinmodal3');
+        var wheelBtn3 = document.getElementById("wheelBtn3");
+        var close3 = document.getElementById("close3");
+        close3.onclick = function () {
+          spinmodal3.style.display = "none";
+        }
+        wheelBtn3.onclick = function () {
+          spinmodal3.style.display = "block";
+        }
+
+        var spinmodal4 = document.getElementById('spinmodal4');
+        var wheelBtn4 = document.getElementById("wheelBtn4");
+        var close4 = document.getElementById("close4");
+        close4.onclick = function () {
+          spinmodal4.style.display = "none";
+        }
+        wheelBtn4.onclick = function () {
+          spinmodal4.style.display = "block";
+        }
+
+        var spinmodal5 = document.getElementById('spinmodal5');
+        var wheelBtn5 = document.getElementById("wheelBtn5");
+        var close5 = document.getElementById("close5");
+        close5.onclick = function () {
+          spinmodal5.style.display = "none";
+        }
+        wheelBtn5.onclick = function () {
+          spinmodal5.style.display = "block";
+        }
+
+        var spinmodal6 = document.getElementById('spinmodal6');
+        var wheelBtn6 = document.getElementById("wheelBtn6");
+        var close6 = document.getElementById("close6");
+        close6.onclick = function () {
+          spinmodal6.style.display = "none";
+        }
+        wheelBtn6.onclick = function () {
+          spinmodal6.style.display = "block";
+        }
+
+        var spinmodal7 = document.getElementById('spinmodal7');
+        var wheelBtn7 = document.getElementById("wheelBtn7");
+        var close7 = document.getElementById("close7");
+        close7.onclick = function () {
+          spinmodal7.style.display = "none";
+        }
+        wheelBtn7.onclick = function () {
+          spinmodal7.style.display = "block";
+        }
+
+        var spinmodal8 = document.getElementById('spinmodal8');
+        var wheelBtn8 = document.getElementById("wheelBtn8");
+        var close8 = document.getElementById("close8");
+        close8.onclick = function () {
+          spinmodal8.style.display = "none";
+        }
+        wheelBtn8.onclick = function () {
+          spinmodal8.style.display = "block";
+        }
+
+        var spinmodal9 = document.getElementById('spinmodal9');
+        var wheelBtn9 = document.getElementById("wheelBtn9");
+        var close9 = document.getElementById("close9");
+        close9.onclick = function () {
+          spinmodal9.style.display = "none";
+        }
+        wheelBtn9.onclick = function () {
+          spinmodal9.style.display = "block";
+        }
+
+
+      }
+    }
+  }
+</script>

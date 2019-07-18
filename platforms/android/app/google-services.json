@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "847976574228",
+    "firebase_url": "https://tejoofashions.firebaseio.com",
+    "project_id": "tejoofashions",
+    "storage_bucket": "tejoofashions.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:847976574228:android:7625659f8aa924fc",
+        "android_client_info": {
+          "package_name": "com.techstreet.tejoo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "847976574228-9aiv8bf03oa7tdcan53r0e9j8i4i59oq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBk8g3aNzty9Zp5PemvQbSP6Zewg9yPKgs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
