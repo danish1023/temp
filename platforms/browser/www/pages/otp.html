@@ -183,6 +183,74 @@
             }
           }
         });
+
+        if (device.platform == 'Android') {
+          SMSReceive.startWatch(function () {
+            document.addEventListener('onSMSArrive', function (e) {
+              var IncomingSMS = e.data;
+              if (IncomingSMS.address == 'HP-TejooF') {
+                var body = IncomingSMS.body;
+                $$('input[name=otp]').val(body.substr(12, 4));
+                var obj = {
+                  Country: Country,
+                  MobileNo: MobileNo,
+                  EmailId: EmailId,
+                  ExistingMember: ExistingMember,
+                  IMEINo: IMEINo,
+                  DeviceID: DeviceID,
+                  OSType: OSType,
+                  OTP: body.substr(12, 4),
+                };
+                app.request({
+                  url: BaseURL + '/WholesalerLogin',
+                  method: 'POST',
+                  dataType: 'json',
+                  data: obj,
+                  contentType: 'application/json',
+                  beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Authorization", "Basic " + btoa(AuthUsername + ":" + AuthPassword));
+                    var spinnerOptions = { dimBackground: false };
+                    SpinnerPlugin.activityStart(null, spinnerOptions);
+                  },
+                  error: function (xhr, status) {
+                    alert(statusMessage(status));
+                  },
+                  success: function (data, status, xhr) {
+                    if (data.ErrorCode == '0') {
+                      localStorage.setItem('User', JSON.stringify(data.Response));
+                      app.views.main.router.navigate('/dashboard/');
+                    }
+                    else if (data.ErrorCode == '-3200') {
+                      app.dialog.alert(data.ErrorMessage, function () {
+                        app.views.main.router.navigate({
+                          name: 'business-type',
+                          params: { 'Country': Country, 'MobileNo': MobileNo },
+                        });
+                      });
+                    }
+                    else if (data.ErrorCode == '-3300') {
+                      app.dialog.alert(data.ErrorMessage, function () {
+                        app.views.main.router.navigate({
+                          name: 'guest-dashboard',
+                        });
+                      });
+                    }
+                    else {
+                      app.dialog.alert(data.ErrorMessage);
+                    }
+                  },
+                  complete: function (xhr, status) {
+                    SpinnerPlugin.activityStop();
+                  }
+                })
+              }
+              SMSReceive.stopWatch();
+            });
+          }, function () {
+            console.log('Failed to start watching');
+          });
+        }
+
       },
     }
   }
