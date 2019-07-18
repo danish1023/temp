@@ -18,7 +18,6 @@ var app = new Framework7({
   view: {
     animate: true,
     xhrCache: false,
-    stackPages: true,
   },
   dialog: {
     title: 'Tejoo Fashions',

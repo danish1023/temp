@@ -366,6 +366,14 @@ module.exports = [
         "id": "cordova-plugin-media-capture.CaptureProxy",
         "pluginId": "cordova-plugin-media-capture",
         "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-sms-receive/www/SMSReceive.js",
+        "id": "cordova-plugin-sms-receive.SMSReceive",
+        "pluginId": "cordova-plugin-sms-receive",
+        "clobbers": [
+            "window.SMSReceive"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -383,7 +391,8 @@ module.exports.metadata =
     "cordova-plugin-uniquedeviceid": "1.3.2",
     "cordova-plugin-camera": "4.1.0",
     "cordova-plugin-file": "6.0.2",
-    "cordova-plugin-media-capture": "3.0.3"
+    "cordova-plugin-media-capture": "3.0.3",
+    "cordova-plugin-sms-receive": "1.0.2"
 }
 // BOTTOM OF METADATA
 });

@@ -63,6 +63,10 @@
                         {
                             "xml": "<feature name=\"PushNotification\"><param name=\"android-package\" value=\"com.adobe.phonegap.push.PushPlugin\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SMSReceive\"><param name=\"android-package\" value=\"com.andreszs.cordova.sms.SMSReceive\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -100,6 +104,14 @@
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-feature android:name=\"android.hardware.telephony\" android:required=\"false\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.RECEIVE_SMS\" />",
                             "count": 1
                         }
                     ],
@@ -200,6 +212,9 @@
         "phonegap-plugin-push": {
             "ANDROID_SUPPORT_V13_VERSION": "27.+",
             "FCM_VERSION": "15.0.0",
+            "PACKAGE_NAME": "com.techstreet.tejoo"
+        },
+        "cordova-plugin-sms-receive": {
             "PACKAGE_NAME": "com.techstreet.tejoo"
         }
     },
@@ -555,6 +570,14 @@
             "clobbers": [
                 "PushNotification"
             ]
+        },
+        {
+            "id": "cordova-plugin-sms-receive.SMSReceive",
+            "file": "plugins/cordova-plugin-sms-receive/www/SMSReceive.js",
+            "pluginId": "cordova-plugin-sms-receive",
+            "clobbers": [
+                "window.SMSReceive"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -572,6 +595,7 @@
         "cordova-plugin-x-toast": "2.7.2",
         "cordova-support-google-services": "1.1.0",
         "phonegap-plugin-multidex": "1.0.0",
-        "phonegap-plugin-push": "2.2.3"
+        "phonegap-plugin-push": "2.2.3",
+        "cordova-plugin-sms-receive": "1.0.2"
     }
 }

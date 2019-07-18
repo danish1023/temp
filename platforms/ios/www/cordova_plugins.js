@@ -362,6 +362,14 @@ module.exports = [
     "clobbers": [
       "PushNotification"
     ]
+  },
+  {
+    "id": "cordova-plugin-sms-receive.SMSReceive",
+    "file": "plugins/cordova-plugin-sms-receive/www/SMSReceive.js",
+    "pluginId": "cordova-plugin-sms-receive",
+    "clobbers": [
+      "window.SMSReceive"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -381,7 +389,8 @@ module.exports.metadata =
   "cordova-plugin-x-toast": "2.7.2",
   "cordova-support-google-services": "1.1.0",
   "phonegap-plugin-multidex": "1.0.0",
-  "phonegap-plugin-push": "2.2.3"
+  "phonegap-plugin-push": "2.2.3",
+  "cordova-plugin-sms-receive": "1.0.2"
 };
 // BOTTOM OF METADATA
 });

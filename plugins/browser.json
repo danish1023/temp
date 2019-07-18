@@ -1,52 +1,55 @@
 {
-  "prepare_queue": {
-    "installed": [],
-    "uninstalled": []
-  },
-  "config_munge": {
-    "files": {}
-  },
-  "installed_plugins": {
-    "cordova-plugin-statusbar": {
-      "PACKAGE_NAME": "com.techstreet.tejoo"
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
     },
-    "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "com.techstreet.tejoo"
+    "config_munge": {
+        "files": {}
     },
-    "cordova-plugin-spinner": {
-      "PACKAGE_NAME": "com.techstreet.tejoo"
+    "installed_plugins": {
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.techstreet.tejoo"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.techstreet.tejoo"
+        },
+        "cordova-plugin-spinner": {
+            "PACKAGE_NAME": "com.techstreet.tejoo"
+        },
+        "cordova-plugin-x-toast": {
+            "PACKAGE_NAME": "com.techstreet.tejoo"
+        },
+        "cordova-plugin-app-version": {
+            "PACKAGE_NAME": "com.techstreet.tejoo"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.techstreet.tejoo"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.techstreet.tejoo"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "com.techstreet.tejoo"
+        },
+        "phonegap-plugin-push": {
+            "PACKAGE_NAME": "com.techstreet.tejoo"
+        },
+        "cordova-plugin-uniquedeviceid": {
+            "PACKAGE_NAME": "com.techstreet.tejoo"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.techstreet.tejoo"
+        },
+        "cordova-plugin-media-capture": {
+            "PACKAGE_NAME": "com.techstreet.tejoo"
+        },
+        "cordova-plugin-sms-receive": {
+            "PACKAGE_NAME": "com.techstreet.tejoo"
+        }
     },
-    "cordova-plugin-x-toast": {
-      "PACKAGE_NAME": "com.techstreet.tejoo"
-    },
-    "cordova-plugin-app-version": {
-      "PACKAGE_NAME": "com.techstreet.tejoo"
-    },
-    "cordova-plugin-device": {
-      "PACKAGE_NAME": "com.techstreet.tejoo"
-    },
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "com.techstreet.tejoo"
-    },
-    "cordova-plugin-geolocation": {
-      "PACKAGE_NAME": "com.techstreet.tejoo"
-    },
-    "phonegap-plugin-push": {
-      "PACKAGE_NAME": "com.techstreet.tejoo"
-    },
-    "cordova-plugin-uniquedeviceid": {
-      "PACKAGE_NAME": "com.techstreet.tejoo"
-    },
-    "cordova-plugin-camera": {
-      "PACKAGE_NAME": "com.techstreet.tejoo"
-    },
-    "cordova-plugin-media-capture": {
-      "PACKAGE_NAME": "com.techstreet.tejoo"
+    "dependent_plugins": {
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.techstreet.tejoo"
+        }
     }
-  },
-  "dependent_plugins": {
-    "cordova-plugin-file": {
-      "PACKAGE_NAME": "com.techstreet.tejoo"
-    }
-  }
 }
